@@ -1,36 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import './NewCollections.css';
-import Item from '../Item/Item';
+import React, { useEffect, useState } from "react";
 
 const NewCollections = () => {
-
-  const [new_collection,setNew_collection] = useState([]);
+  const [collection, setCollection] = useState([]);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}/newcollection`)
-    .then((response) => response.json())
-    .then((data)=>setNew_collection(data));
-  },[])
-
+      .then((res) => res.json())
+      .then((data) => setCollection(data))
+      .catch((err) => console.error("❌ Error:", err));
+  }, []);
 
   return (
-    <section className='new-collections'>
-      <h1>NEW COLLECTIONS</h1>
-      <hr />
-      <div className="new-collections-item">
-        {new_collection.map((item, i) => (
-          <Item
-            key={i}
-            id={item.id}
-            name={item.name}
-            image={item.image}
-            new_price={item.new_price}
-            old_price={item.old_price}
-          />
-        ))}
-      </div>
-    </section>
+    <div>
+      {collection.map((item) => (
+        <div key={item.id}>{item.name}</div>
+      ))}
+    </div>
   );
-}
+};
 
 export default NewCollections;
