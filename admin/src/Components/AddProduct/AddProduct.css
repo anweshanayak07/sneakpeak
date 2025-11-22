@@ -1,0 +1,127 @@
+.add-product {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 720px;
+  padding: 40px 48px;
+  margin: 40px auto;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  transition: all 0.3s ease;
+}
+
+.addproduct-itemfield {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #555;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.addproduct-itemfield p {
+  margin: 0;
+  color: #333;
+}
+
+.addproduct-itemfield input,
+.add-product-selector {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+  border: 1px solid #d0d0d0;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #333;
+  background: #fafafa;
+  transition: all 0.25s ease;
+  outline: none;
+}
+
+.addproduct-itemfield input:focus,
+.add-product-selector:focus {
+  border-color: #4e6cff;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(78, 108, 255, 0.1);
+}
+
+.add-product-price {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.add-product-selector {
+  cursor: pointer;
+  appearance: none;
+  background: #fafafa url("data:image/svg+xml;utf8,<svg fill='gray' height='18' viewBox='0 0 24 24' width='18' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>") no-repeat right 14px center;
+  background-size: 14px;
+}
+
+.addproduct-thumbnail-img {
+  height: 100px;           
+  width: 100px;            
+  border-radius: 10px;
+  object-fit: contain;
+  margin: 12px 0;
+  border: 2px dashed #d0d0d0;
+  background: #fafafa;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  padding: 16px;            
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addproduct-thumbnail-img:hover {
+  border-color: #4e6cff;
+  background: #f0f4ff;
+}
+
+
+.addproduct-btn {
+  align-self: flex-start;
+  margin-top: 12px;
+  width: 160px;
+  height: 50px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #4e6cff, #7b93ff);
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  box-shadow: 0 4px 12px rgba(78, 108, 255, 0.3);
+  transition: all 0.25s ease;
+}
+
+.addproduct-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(78, 108, 255, 0.4);
+}
+
+.addproduct-btn:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 800px) {
+  .add-product {
+    padding: 24px;
+    margin: 20px;
+    box-shadow: none;
+  }
+
+  .add-product-price {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .addproduct-btn {
+    width: 100%;
+  }
+}

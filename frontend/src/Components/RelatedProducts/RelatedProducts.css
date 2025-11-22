@@ -1,0 +1,224 @@
+.relatedproducts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 80px 0;
+  background: #fff;
+  font-family: "Poppins", sans-serif;
+}
+
+.relatedproducts h1 {
+  color: #1a1a1a;
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.relatedproducts hr {
+  width: 140px;
+  height: 4px;
+  border: none;
+  border-radius: 10px;
+  background: #ff914d;
+  margin-top: 10px;
+}
+
+/* Grid layout for product items */
+.relatedproducts-item {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 35px;
+  justify-content: center;
+  width: 85%;
+  max-width: 1200px;
+}
+
+/* Product card */
+.relatedproducts-item .item {
+  background: #fafafa;
+  border-radius: 15px;
+  padding: 18px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.relatedproducts-item .item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Product images */
+.relatedproducts-item .item img {
+  width: 100%;
+  height: 250px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+/* Product name */
+.relatedproducts-item .item p {
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 5px 0;
+  height: 40px;
+  overflow: hidden;
+}
+
+/* Price styling */
+.relatedproducts-item .item .item-prices {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.relatedproducts-item .item .item-price-new {
+  color: #ff4141;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.relatedproducts-item .item .item-price-old {
+  color: #999;
+  text-decoration: line-through;
+  font-size: 15px;
+}
+
+/* Responsive design */
+/* ----------- 1280px ---------- */
+@media (max-width: 1280px) {
+  .relatedproducts h1 {
+    font-size: 2.2rem;
+  }
+  .relatedproducts hr {
+    width: 120px;
+  }
+  .relatedproducts-item {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    max-width: 980px;
+  }
+  .relatedproducts-item .item {
+    max-width: 210px;
+    padding: 12px;
+  }
+  .relatedproducts-item .item img {
+    height: 180px;
+  }
+  .relatedproducts-item .item p {
+    font-size: 1rem;
+  }
+  .relatedproducts-item .item-prices {
+    font-size: 0.95rem;
+    gap: 10px;
+  }
+}
+
+/* ----------- 1024px ---------- */
+@media (max-width: 1024px) {
+  .relatedproducts {
+    padding: 35px 0 20px 0;
+    gap: 13px;
+  }
+  .relatedproducts h1 {
+    font-size: 1.6rem;
+  }
+  .relatedproducts hr {
+    width: 80px;
+    height: 5px;
+    margin-bottom: 22px;
+  }
+  .relatedproducts-item {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 19px;
+    max-width: 680px;
+    padding: 0 2vw;
+  }
+  .relatedproducts-item .item {
+    max-width: 160px;
+    padding: 8px;
+    border-radius: 13px;
+  }
+  .relatedproducts-item .item img {
+    height: 120px;
+    border-radius: 9px;
+  }
+  .relatedproducts-item .item p {
+    font-size: 0.93rem;
+  }
+}
+
+/* ----------- 800px ---------- */
+@media (max-width: 800px) {
+  .relatedproducts {
+    padding: 28px 0 9px 0;
+    gap: 10px;
+  }
+  .relatedproducts h1 {
+    font-size: 1.2rem;
+  }
+  .relatedproducts hr {
+    width: 54px;
+    height: 4px;
+    margin-bottom: 17px;
+  }
+  .relatedproducts-item {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 14px;
+    max-width: 400px;
+    padding: 0 3vw;
+  }
+  .relatedproducts-item .item {
+    max-width: 98vw;
+    width: 96vw;
+    padding: 6px;
+    border-radius: 11px;
+  }
+  .relatedproducts-item .item img {
+    height: 96px;
+  }
+  .relatedproducts-item .item p {
+    font-size: 0.83rem;
+    margin-top: 7px;
+  }
+}
+
+/* ----------- 500px ---------- */
+@media (max-width: 500px) {
+  .relatedproducts {
+    padding: 16px 0 4px 0;
+    gap: 6px;
+  }
+  .relatedproducts h1 {
+    font-size: 0.96rem;
+  }
+  .relatedproducts hr {
+    width: 38px;
+    height: 3px;
+    margin-bottom: 10px;
+  }
+  .relatedproducts-item {
+    grid-template-columns: 1fr;
+    gap: 9px;
+    max-width: 97vw;
+    padding: 0 1vw;
+  }
+  .relatedproducts-item .item {
+    max-width: 97vw;
+    padding: 3px;
+  }
+  .relatedproducts-item .item img {
+    height: 50vw;
+    min-height: 60px;
+    max-height: 180px;
+  }
+  .relatedproducts-item .item p {
+    font-size: 0.71rem;
+    margin-top: 4px;
+  }
+}

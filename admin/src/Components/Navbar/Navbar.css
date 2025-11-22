@@ -1,0 +1,85 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding: 14px 90px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  height: 95px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Logo: enlarged and crisp */
+.nav-logo {
+  width: 280px; /* previously 240px */
+  height: auto;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.nav-logo:hover {
+  transform: scale(1.03);
+}
+
+/* Profile: more prominent and neatly rounded */
+.nav-profile {
+  width: 85px;  /* previously 70px */
+  height: 85px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid #e0e0e0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav-profile:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.12);
+}
+
+/* ---------- Responsive Adjustments ---------- */
+
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 12px 60px;
+    height: 85px;
+  }
+  .nav-logo {
+    width: 230px;
+  }
+  .nav-profile {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 35px;
+    height: 80px;
+  }
+  .nav-logo {
+    width: 190px;
+  }
+  .nav-profile {
+    width: 65px;
+    height: 65px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 8px 25px;
+    height: 75px;
+  }
+  .nav-logo {
+    width: 150px;
+  }
+  .nav-profile {
+    width: 55px;
+    height: 55px;
+  }
+}

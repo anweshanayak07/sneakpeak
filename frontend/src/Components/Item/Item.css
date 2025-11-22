@@ -1,0 +1,123 @@
+.item {
+    flex: 1 1 260px;
+    max-width: 100%;
+    min-width: 190px;
+    background: #fff;
+    border-radius: 13px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    margin: 10px;
+    padding: 16px 12px 14px 12px;
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item img {
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+    min-height: 120px;
+    object-fit: contain;
+    background: #f5f5f7;
+    margin-bottom: 14px;
+    border-radius: 8px;
+    transition: box-shadow 0.18s;
+}
+
+.item p {
+    margin: 10px 0 4px 0;
+    color: #232323;
+    font-size: clamp(0.95rem, 2.5vw, 1.08rem);
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.35px;
+}
+
+.item-prices {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 2px;
+}
+
+.item-price-new {
+    color: #374151;
+    font-size: clamp(1.02rem, 2.5vw, 1.19rem);
+    font-weight: 700;
+}
+
+.item-price-old {
+    color: #8c8c8c;
+    font-size: clamp(0.91rem, 2vw, 1rem);
+    font-weight: 500;
+    text-decoration: line-through;
+}
+
+.item:hover {
+    transform: scale(1.045);
+    box-shadow: 0 4px 24px rgba(255, 65, 65, 0.12);
+}
+
+@media (max-width: 1280px) {
+    .item {
+        flex: 1 1 205px;
+        min-width: 145px;
+        padding: 13px 8px;
+    }
+    .item img {
+        max-width: 165px;
+        min-height: 80px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .item {
+        flex: 1 1 145px;
+        min-width: 110px;
+        padding: 8px 2px;
+    }
+    .item img {
+        max-width: 115px;
+    }
+    .item-prices {
+        gap: 12px;
+    }
+}
+
+@media (max-width: 800px) {
+    .item {
+        flex: 1 1 98px;
+        min-width: 74px;
+        padding: 7px 1vw 8px 1vw;
+    }
+    .item img {
+        max-width: 80px;
+        min-height: 60px;
+    }
+    .item-prices {
+        gap: 8px;
+    }
+}
+
+@media (max-width: 500px) {
+    .item {
+        flex: none;
+        width: 96vw;
+        margin: 10px auto;
+        padding: 6vw 0vw 7vw 0vw;
+        border-radius: 11px;
+    }
+    .item img {
+        max-width: 70vw;
+        min-height: 40px;
+    }
+    .item-prices {
+        gap: 10vw;
+    }
+    .item p {
+        font-size: clamp(1.01rem, 5vw, 1.13rem);
+    }
+}

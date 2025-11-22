@@ -1,0 +1,226 @@
+.popular {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  min-height: 90vh;
+  padding: 48px 0 32px 0;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.popular h1 {
+  color: #171717;
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -1px;
+  text-align: center;
+}
+
+.popular hr {
+  width: 160px;
+  height: 6px;
+  border-radius: 10px;
+  background: #252525;
+  margin: 13px 0 33px 0;
+  border: none;
+}
+
+.popular-item {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Desktop: 4 items per row */
+  gap: 32px;
+  justify-items: center;
+  width: 100%;
+  max-width: 1280px;
+  padding: 0 1vw;
+}
+.popular-item .item {
+  width: 100%;
+  max-width: 270px;
+  background: #fff;
+  border-radius: 18px;
+  padding: 15px;
+  box-shadow: 0px 8px 24px rgba(0,0,0,0.08);
+  transition: transform 0.32s, box-shadow 0.32s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popular-item .item:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0px 14px 38px rgba(255,65,65,0.13);
+}
+
+.popular-item .item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 15px;
+  background: #f9f9f9;
+}
+
+.popular-item .item p {
+  margin: 12px 0 0 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #171717;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  max-width: 100%;
+}
+
+.popular-item .item-prices {
+  display: flex;
+  gap: 12px;
+  font-size: 1rem;
+  margin-top: 6px;
+  justify-content: center;
+}
+.popular-item .item-price-new {
+  font-weight: 700;
+  color: #ff4141;
+}
+.popular-item .item-price-old {
+  text-decoration: line-through;
+  color: #888;
+  font-weight: 500;
+}
+
+/* ----------- 1280px ---------- */
+@media (max-width: 1280px) {
+  .popular h1 {
+    font-size: 2.2rem;
+  }
+  .popular hr {
+    width: 120px;
+  }
+  .popular-item {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    max-width: 980px;
+  }
+  .popular-item .item {
+    max-width: 210px;
+    padding: 12px;
+  }
+  .popular-item .item img {
+    height: 180px;
+  }
+  .popular-item .item p {
+    font-size: 1rem;
+  }
+  .popular-item .item-prices {
+    font-size: 0.95rem;
+    gap: 10px;
+  }
+}
+
+/* ----------- 1024px ---------- */
+@media (max-width: 1024px) {
+  .popular {
+    padding: 35px 0 20px 0;
+    gap: 13px;
+  }
+  .popular h1 {
+    font-size: 1.6rem;
+  }
+  .popular hr {
+    width: 80px;
+    height: 5px;
+    margin-bottom: 22px;
+  }
+  .popular-item {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 19px;
+    max-width: 680px;
+    padding: 0 2vw;
+  }
+  .popular-item .item {
+    max-width: 160px;
+    padding: 8px;
+    border-radius: 13px;
+  }
+  .popular-item .item img {
+    height: 120px;
+    border-radius: 9px;
+  }
+  .popular-item .item p {
+    font-size: 0.93rem;
+  }
+}
+
+/* ----------- 800px ---------- */
+@media (max-width: 800px) {
+  .popular {
+    padding: 28px 0 9px 0;
+    gap: 10px;
+  }
+  .popular h1 {
+    font-size: 1.2rem;
+  }
+  .popular hr {
+    width: 54px;
+    height: 4px;
+    margin-bottom: 17px;
+  }
+  .popular-item {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 14px;
+    max-width: 400px;
+    padding: 0 3vw;
+  }
+  .popular-item .item {
+    max-width: 98vw;
+    width: 96vw;
+    padding: 6px;
+    border-radius: 11px;
+  }
+  .popular-item .item img {
+    height: 96px;
+  }
+  .popular-item .item p {
+    font-size: 0.83rem;
+    margin-top: 7px;
+  }
+}
+
+/* ----------- 500px ---------- */
+@media (max-width: 500px) {
+  .popular {
+    padding: 16px 0 4px 0;
+    gap: 6px;
+  }
+  .popular h1 {
+    font-size: 0.96rem;
+  }
+  .popular hr {
+    width: 38px;
+    height: 3px;
+    margin-bottom: 10px;
+  }
+  .popular-item {
+    grid-template-columns: 1fr;
+    gap: 9px;
+    max-width: 97vw;
+    padding: 0 1vw;
+  }
+  .popular-item .item {
+    max-width: 97vw;
+    padding: 3px;
+  }
+  .popular-item .item img {
+    height: 50vw;
+    min-height: 60px;
+    max-height: 180px;
+  }
+  .popular-item .item p {
+    font-size: 0.71rem;
+    margin-top: 4px;
+  }
+}

@@ -1,0 +1,136 @@
+.success-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f0f7ff;
+  padding: 20px;
+}
+
+
+.success-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 40px;
+  width: 90%;
+  max-width: 450px;
+  text-align: center;
+  box-shadow: 0px 10px 25px rgba(0, 110, 255, 0.15);
+  animation: popIn 0.6s ease-in-out;
+}
+
+
+.success-icon {
+  font-size: 60px;
+  color: #21c55d;
+  background: #d9fbe7;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.success-card h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #0c2a4a;
+}
+
+.subtitle {
+  color: #51627b;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+ 
+.details-box {
+  background: #f7fbff;
+  border: 1px solid #d5e7ff;
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 10px;
+  text-align: left;
+  font-size: 15px;
+}
+
+.details-box p {
+  margin: 8px 0;
+  color: #1b2430;
+}
+
+.buttons {
+  margin-top: 25px;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: #2563eb;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-right: 10px;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background: #1e4fd7;
+}
+
+.btn-secondary {
+  display: inline-block;
+  color: #2563eb;
+  padding: 12px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-secondary:hover {
+  background: #dceaff;
+}
+
+.loading {
+  margin-top: 10px;
+  font-weight: 500;
+  color: #7a889b;
+}
+.details-box {
+  background: #f7fbff;
+  border: 1px solid #d5e7ff;
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 10px;
+  text-align: left;
+  font-size: 15px;
+
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
+.details-box p {
+  margin: 8px 0;
+  color: #1b2430;
+  word-wrap: break-word;  
+  overflow-wrap: break-word;  
+  word-break: break-all;
+}
+
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

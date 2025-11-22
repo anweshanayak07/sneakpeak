@@ -1,0 +1,113 @@
+/* === Page Background === */
+.cancel-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff1f1;
+  padding: 20px;
+}
+
+/* === Card === */
+.cancel-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 40px;
+  width: 90%;
+  max-width: 450px;
+  text-align: center;
+  box-shadow: 0px 10px 25px rgba(255, 50, 50, 0.15);
+  animation: popIn 0.6s ease-in-out;
+}
+
+/* === Cancel Icon === */
+.cancel-icon {
+  font-size: 60px;
+  color: #ff3b3b;
+  background: #ffe2e2;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+/* === Headings === */
+.cancel-card h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #4a0e0e;
+}
+
+.subtitle {
+  color: #804040;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+/* === Details Box === */
+.details-box {
+  background: #fff6f6;
+  border: 1px solid #ffd5d5;
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 10px;
+  text-align: left;
+  font-size: 15px;
+}
+
+.details-box p {
+  margin: 8px 0;
+  color: #331a1a;
+}
+
+/* === Buttons === */
+.buttons {
+  margin-top: 25px;
+}
+
+.btn-primary-red {
+  display: inline-block;
+  background: #ef4343;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-right: 10px;
+  transition: 0.3s;
+}
+
+.btn-primary-red:hover {
+  background: #d83131;
+}
+
+.btn-secondary {
+  display: inline-block;
+  color: #2563eb;
+  padding: 12px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-secondary:hover {
+  background: #dceaff;
+}
+
+/* Animation */
+@keyframes popIn {
+  0% {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,14 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+
+# Uploads
+upload/
+upload/images/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
