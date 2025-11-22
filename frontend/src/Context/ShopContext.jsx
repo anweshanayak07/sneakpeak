@@ -3,8 +3,8 @@ import axios from "axios";
 
 export const ShopContext = createContext(null);
 
-// API Base URL (from .env)
-const apiURL = process.env.REACT_APP_API_URL;
+
+const apiURL = import.meta.env.VITE_API_URL;
 
 // Initialize cart
 const getDefaultCart = () => {
@@ -21,13 +21,11 @@ const ShopContextProvider = (props) => {
   useEffect(() => {
     const token = localStorage.getItem("auth-token");
 
-    // Fetch all products
     axios
       .get(`${apiURL}/allproducts`)
       .then((res) => setAll_Product(res.data))
       .catch((err) => console.error("❌ Error fetching products:", err));
 
-    // Fetch cart
     if (token) {
       axios
         .get(`${apiURL}/getcart`, {
@@ -39,14 +37,12 @@ const ShopContextProvider = (props) => {
         .then((res) => setCartItems(res.data))
         .catch((err) => console.error("❌ Error fetching cart:", err));
     }
-  }, []);
+  }, [apiURL]);
 
-  // ADD TO CART
   const addToCart = async (itemId) => {
     try {
       const token = localStorage.getItem("auth-token");
       if (!token) return alert("⚠️ Please log in");
-
       await axios.post(
         `${apiURL}/addtocart`,
         { itemId },
@@ -62,12 +58,10 @@ const ShopContextProvider = (props) => {
     }
   };
 
-  // REMOVE FROM CART
   const removeFromCart = async (itemId) => {
     try {
       const token = localStorage.getItem("auth-token");
       if (!token) return alert("⚠️ Please log in");
-
       await axios.post(
         `${apiURL}/removefromcart`,
         { itemId },
@@ -83,7 +77,6 @@ const ShopContextProvider = (props) => {
     }
   };
 
-  // TOTAL AMOUNT
   const getTotalCartAmount = () => {
     let total = 0;
     for (const item in cartItems) {
@@ -95,7 +88,6 @@ const ShopContextProvider = (props) => {
     return total;
   };
 
-  // TOTAL ITEMS
   const getTotalCartItems = () => {
     return Object.values(cartItems).reduce((sum, qty) => sum + qty, 0);
   };

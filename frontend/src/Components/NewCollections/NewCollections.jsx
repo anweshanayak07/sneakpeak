@@ -3,12 +3,14 @@ import React, { useEffect, useState } from "react";
 const NewCollections = () => {
   const [collection, setCollection] = useState([]);
 
+  const apiURL = import.meta.env.VITE_API_URL;
+
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}/newcollection`)
+    fetch(`${apiURL}/newcollection`)
       .then((res) => res.json())
       .then((data) => setCollection(data))
-      .catch((err) => console.error("❌ Error:", err));
-  }, []);
+      .catch((err) => console.error("❌ Error fetching new collection:", err));
+  }, [apiURL]);
 
   return (
     <div>
