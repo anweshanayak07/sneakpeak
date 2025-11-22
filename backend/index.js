@@ -169,8 +169,11 @@ app.post("/removefromcart", fetchUser, async (req, res) => {
 
 // ------------------ Stripe Checkout ------------------
 app.post("/create-checkout-session", async (req, res) => {
+  console.log("🔥 Stripe route HIT");          
+  console.log("🔥 BODY:", req.body);           
+  console.log("🔥 PRODUCTS:", req.body.products); 
+
   try {
-    console.log("📦 Received products:", req.body.products);
     const items = req.body.products;
 
     const lineItems = items.map((p) => ({
