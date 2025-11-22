@@ -193,6 +193,11 @@ app.get("/checkout-session/:id", async (req, res) => {
   }
 });
 
+app.get("/healthz", (req, res) => {
+  res.status(200).send("OK");
+});
+
+
 // ------------------ Start Server ------------------
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`Backend running on ${PORT}`));
