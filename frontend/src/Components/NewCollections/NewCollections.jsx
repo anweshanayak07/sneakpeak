@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 const NewCollections = () => {
   const [collection, setCollection] = useState([]);
 
-  const apiURL = import.meta.env.VITE_API_URL;
+
+  const apiURL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     fetch(`${apiURL}/newcollection`)

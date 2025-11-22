@@ -4,7 +4,7 @@ import axios from "axios";
 export const ShopContext = createContext(null);
 
 
-const apiURL = import.meta.env.VITE_API_URL;
+const apiURL = process.env.REACT_APP_API_URL;
 
 // Initialize cart
 const getDefaultCart = () => {
@@ -21,11 +21,15 @@ const ShopContextProvider = (props) => {
   useEffect(() => {
     const token = localStorage.getItem("auth-token");
 
+    // Fetch all products
     axios
       .get(`${apiURL}/allproducts`)
       .then((res) => setAll_Product(res.data))
-      .catch((err) => console.error("❌ Error fetching products:", err));
+      .catch((err) =>
+        console.error("❌ Error fetching products:", err)
+      );
 
+    // Fetch cart if logged in
     if (token) {
       axios
         .get(`${apiURL}/getcart`, {
@@ -35,14 +39,18 @@ const ShopContextProvider = (props) => {
           },
         })
         .then((res) => setCartItems(res.data))
-        .catch((err) => console.error("❌ Error fetching cart:", err));
+        .catch((err) =>
+          console.error("❌ Error fetching cart:", err)
+        );
     }
-  }, [apiURL]);
+  }, []);
 
+  // ADD TO CART
   const addToCart = async (itemId) => {
     try {
       const token = localStorage.getItem("auth-token");
       if (!token) return alert("⚠️ Please log in");
+
       await axios.post(
         `${apiURL}/addtocart`,
         { itemId },
@@ -58,10 +66,12 @@ const ShopContextProvider = (props) => {
     }
   };
 
+  // REMOVE FROM CART
   const removeFromCart = async (itemId) => {
     try {
       const token = localStorage.getItem("auth-token");
       if (!token) return alert("⚠️ Please log in");
+
       await axios.post(
         `${apiURL}/removefromcart`,
         { itemId },
@@ -77,19 +87,26 @@ const ShopContextProvider = (props) => {
     }
   };
 
+  // TOTAL PRICE
   const getTotalCartAmount = () => {
     let total = 0;
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
-        const product = all_product.find((p) => p.id === Number(item));
+        const product = all_product.find(
+          (p) => p.id === Number(item)
+        );
         if (product) total += product.new_price * cartItems[item];
       }
     }
     return total;
   };
 
+  // TOTAL ITEMS
   const getTotalCartItems = () => {
-    return Object.values(cartItems).reduce((sum, qty) => sum + qty, 0);
+    return Object.values(cartItems).reduce(
+      (sum, qty) => sum + qty,
+      0
+    );
   };
 
   return (
