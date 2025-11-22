@@ -6,7 +6,16 @@ const jwt = require("jsonwebtoken");
 const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
-const fs = require("fs");
+
+// Cloudinary
+const cloudinary = require("cloudinary").v2;
+
+// Configure Cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 // Stripe
 const stripe = require("stripe")(process.env.STRIPE_SECRET);
@@ -21,14 +30,6 @@ app.use(
   })
 );
 
-// Ensure upload directory exists
-if (!fs.existsSync("./upload/images")) {
-  fs.mkdirSync("./upload/images", { recursive: true });
-}
-
-// Serve images
-app.use("/images", express.static("upload/images"));
-
 // ------------------ MongoDB ------------------
 mongoose
   .connect(process.env.MONGO_URI)
@@ -36,8 +37,9 @@ mongoose
   .catch((err) => console.log(err));
 
 // ------------------ Multer ------------------
+// We will use Multer to receive the file, then upload to Cloudinary
 const storage = multer.diskStorage({
-  destination: "./upload/images",
+  destination: (req, file, cb) => cb(null, "/tmp"), // temp directory (works on Render)
   filename: (req, file, cb) => {
     cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
   },
@@ -76,14 +78,24 @@ const fetchUser = async (req, res, next) => {
 };
 
 // ------------------ Upload Product Image ------------------
-app.post("/upload", upload.single("product"), (req, res) => {
-  if (!req.file)
-    return res.status(400).json({ success: false, message: "No file uploaded" });
+app.post("/upload", upload.single("product"), async (req, res) => {
+  try {
+    if (!req.file)
+      return res.status(400).json({ success: false, message: "No file uploaded" });
 
-  res.json({
-    success: true,
-    image_url: `${process.env.BACKEND_URL}/images/${req.file.filename}`,
-  });
+    // Upload file to Cloudinary
+    const uploadResult = await cloudinary.uploader.upload(req.file.path, {
+      folder: "sneakpeak-products",
+    });
+
+    res.json({
+      success: true,
+      image_url: uploadResult.secure_url,
+    });
+  } catch (error) {
+    console.error("Cloudinary upload error:", error);
+    res.status(500).json({ success: false, error: error.message });
+  }
 });
 
 // ------------------ Auth Routes ------------------
@@ -196,7 +208,6 @@ app.get("/checkout-session/:id", async (req, res) => {
 app.get("/healthz", (req, res) => {
   res.status(200).send("OK");
 });
-
 
 // ------------------ Start Server ------------------
 const PORT = process.env.PORT || 4000;
