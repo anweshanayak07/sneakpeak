@@ -176,7 +176,8 @@ app.post("/create-checkout-session", async (req, res) => {
       price_data: {
         currency: "usd",
         product_data: { name: p.name, images: [p.image] },
-        unit_amount: Math.round(parseFloat(p.price) * 100),
+        unit_amount: Math.round(Number(p.price || p.new_price) * 100),
+
       },
       quantity: p.quantity,
     }));
