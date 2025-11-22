@@ -170,6 +170,7 @@ app.post("/removefromcart", fetchUser, async (req, res) => {
 // ------------------ Stripe Checkout ------------------
 app.post("/create-checkout-session", async (req, res) => {
   try {
+    console.log("📦 Received products:", req.body.products);
     const items = req.body.products;
 
     const lineItems = items.map((p) => ({
@@ -188,12 +189,15 @@ app.post("/create-checkout-session", async (req, res) => {
       line_items: lineItems,
       success_url: `${process.env.FRONTEND_URL}/payment-success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.FRONTEND_URL}/payment-cancel`,
+      
     });
 
     res.json({ url: session.url });
   } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
+  console.error("❌ Stripe Error:", error);
+  res.status(400).json({ error: error.message });
+}
+
 });
 
 // Get Stripe session info
