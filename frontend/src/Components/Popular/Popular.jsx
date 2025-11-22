@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
+import Item from "../Item/Item";
 
 const Popular = () => {
   const [popular, setPopular] = useState([]);
-
 
   const apiURL = process.env.REACT_APP_API_URL;
 
@@ -16,9 +16,16 @@ const Popular = () => {
   }, [apiURL]);
 
   return (
-    <div>
+    <div className="popular">
       {popular.map((item) => (
-        <div key={item.id}>{item.name}</div>
+        <Item
+          key={item.id}
+          id={item.id}
+          name={item.name}
+          image={item.image}
+          new_price={item.new_price}
+          old_price={item.old_price}
+        />
       ))}
     </div>
   );
