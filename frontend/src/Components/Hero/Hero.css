@@ -1,20 +1,29 @@
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .hero {
-  min-height: 100vh;
-  background: linear-gradient(180deg, #3E7CB1, #DBE4EE 60%);
+  min-height: 90vh;
+  /* Taller hero */
+  background: linear-gradient(180deg, var(--bg-color) 0%, #e8e8e8 100%);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-  padding: 0 7vw;
-  gap: 0;
+  justify-content: center;
+  /* Centered content by default */
+  padding: 0 5vw;
   position: relative;
+  overflow: hidden;
+}
+
+/* Graphical Element: Industrial Stripe */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 15%;
+  width: 30vw;
+  height: 100%;
+  background: var(--accent);
+  opacity: 0.1;
+  transform: skewX(-15deg);
+  z-index: 0;
+  pointer-events: none;
 }
 
 .hero-left {
@@ -22,67 +31,85 @@ html, body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 30px;
-  min-width: 260px;
-  padding-right: 2vw;
+  gap: 24px;
+  /* Better spacing */
   z-index: 2;
+  padding-right: 20px;
 }
 
 .hero-left h2 {
-  color: #090909;
-  font-size: 2.2rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-  margin-top: 0;
+  color: var(--accent);
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin: 0;
+  text-transform: uppercase;
 }
 
 .hero-left p {
-  color: #171717;
-  font-size: 3.9rem;
-  font-weight: 700;
-  margin: 0 0 6px 0;
-  line-height: 1.09;
-  letter-spacing: -1.5px;
+  color: var(--primary);
+  font-family: var(--font-display);
+  /* Huge Impact Font */
+  font-size: clamp(3rem, 5vw, 6rem);
+  /* Responsive font size */
+  line-height: 0.95;
+  margin: 0;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.5);
 }
 
 .hero-hand-icon {
   display: flex;
-  align-items: center;
-  gap: 17px;
+  align-items: baseline;
+  gap: 16px;
 }
 
 .hero-hand-icon img {
-  width: 64px;
-  height: 64px;
+  width: clamp(40px, 8vw, 80px);
 }
 
-.hero-latest-btn {
-  display: flex;
+/* Button Container */
+.hero-latest-btn-new {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  width: 240px;
-  height: 54px;
-  border-radius: 50px;
-  margin-top: 26px;
-  background: #ff4141;
+  gap: 8px;
+  /* Tighter gap */
+  margin-top: 32px;
+  width: fit-content;
+
+  background: var(--primary);
   color: white;
-  font-size: 1.18rem;
+  padding: 10px 20px;
+  /* Explicit compact padding */
+  font-family: var(--font-heading);
+  font-size: 1rem;
   font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 2px solid var(--primary);
   cursor: pointer;
-  transition: transform 0.2s;
-  box-shadow: 0 2px 20px rgba(255,65,65,0.07);
-  border: none;
+  transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
-.hero-latest-btn img {
-  width: 22px;
-  height: 22px;
-  object-fit: contain;
+.hero-latest-btn-new img {
+  height: 14px;
+  /* Force image to be small */
+  width: auto;
 }
 
-.hero-latest-btn:hover {
-  transform: scale(1.06);
+.hero-latest-btn-new:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.2);
+}
+
+.hero-latest-btn-new:active {
+  transform: translate(0, 0);
+  box-shadow: none;
 }
 
 .hero-right {
@@ -90,117 +117,68 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 220px;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-right img {
-  max-width: 98%;
+  max-width: 90%;
   height: auto;
-  object-fit: contain;
-  margin-top: 16px;
-  margin-bottom: 16px;
+  filter: drop-shadow(20px 20px 0 rgba(0, 0, 0, 0.8));
+  /* Hard shadow for pop effect */
+  transition: transform 0.4s ease;
 }
 
-/* Tablet */
-@media (max-width: 1100px) {
-  .hero {
-    padding: 0 3vw;
-  }
-  .hero-left {
-    min-width: 180px;
-    gap: 20px;
-    padding-right: 1vw;
-  }
-  .hero-left h2 {
-    font-size: 1.44rem;
-  }
+.hero-right img:hover {
+  transform: scale(1.02) rotate(-1deg);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
   .hero-left p {
-    font-size: 2.5rem;
-  }
-  .hero-hand-icon img {
-    width: 40px;
-    height: 40px;
-  }
-  .hero-latest-btn {
-    width: 160px;
-    height: 38px;
-    font-size: 0.99rem;
-  }
-  .hero-right img {
-    max-width: 390px;
+    font-size: 4rem;
   }
 }
 
-/* Large Mobile */
-@media (max-width: 800px) {
+@media (max-width: 768px) {
   .hero {
-    padding: 0 4vw 0 4vw;
     flex-direction: column;
-    min-height: unset;
-    gap: 28px;
+    padding: 80px 20px 40px;
+    /* More top padding for navbar */
+    gap: 40px;
+    text-align: center;
+    min-height: auto;
+    /* Allow auto height on mobile */
   }
+
   .hero-left {
-    width: 100%;
-    min-width: 0;
-    gap: 15px;
-    align-items: flex-start;
+    align-items: center;
     padding-right: 0;
   }
-  .hero-right {
-    width: 100%;
-    padding-top: 15px;
-  }
-  .hero-left h2 {
-    font-size: 1.18rem;
-  }
-  .hero-left p {
-    font-size: 1.38rem;
-  }
-  .hero-latest-btn {
-    width: 109px;
-    height: 30px;
-    font-size: 0.85rem;
-  }
-  .hero-hand-icon img {
-    width: 28px;
-    height: 28px;
-  }
-  .hero-right img {
-    max-width: 75vw;
-  }
-}
 
-/* Small Mobile */
-@media (max-width: 500px) {
-  .hero {
-    padding: 0 2vw;
-    flex-direction: column;
-    gap: 14px;
-  }
-  .hero-left {
-    align-items: flex-start;
-    gap: 13px;
-    padding-right: 0;
-    width: 100vw;
-    min-width: 0;
-  }
   .hero-left h2 {
-    font-size: 1.06rem;
+    font-size: 1.2rem;
   }
+
   .hero-left p {
-    font-size: 1.15rem;
+    font-size: 3rem;
+    /* Fallback */
+    font-size: clamp(2.5rem, 10vw, 4rem);
+    /* Responsive clamp for mobile */
   }
-  .hero-latest-btn {
-    width: 90vw;
-    max-width: 150px;
-    height: 27px;
-    font-size: 0.82rem;
+
+  .hero-hand-icon {
+    justify-content: center;
   }
-  .hero-hand-icon img {
-    width: 19px;
-    height: 19px;
+
+  .hero::after {
+    width: 60%;
+    right: -20%;
+    transform: skewX(-10deg);
   }
-  .hero-right {
-    display: none;
+
+  .hero-right img {
+    max-width: 85%;
+    margin-top: 20px;
   }
 }

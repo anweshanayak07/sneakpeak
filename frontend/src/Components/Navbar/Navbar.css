@@ -1,224 +1,219 @@
-
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px 5vw;
-    background: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    position: relative;
-    z-index: 20;
+    padding: 0 5vw;
+    /* Wider padding for premium feel */
+    height: var(--header-height);
+    background: var(--surface);
+    border-bottom: var(--border-width) solid var(--primary);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.05);
+    /* Subtle shadow */
 }
 
 .nav-logo {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
+    cursor: pointer;
 }
 
 .nav-logo img {
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
+    height: 48px;
+    /* Slightly larger logo */
+    filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.2));
 }
 
 .nav-logo p {
-    color: #1a1a1a;
+    color: var(--primary);
+    font-family: var(--font-display);
     font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
+    margin: 0;
+    text-transform: uppercase;
+    line-height: 1;
 }
 
 .nav-menu {
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: 48px;
+    /* More space between links */
     list-style: none;
     margin: 0;
     padding: 0;
-    transition: opacity 0.3s, max-height 0.3s;
-    max-height: 300px;
-    opacity: 1;
 }
 
 .nav-menu li {
-    position: relative;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: #626262;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     cursor: pointer;
-    padding: 8px 0;
+}
+
+.nav-menu li a {
+    color: var(--text-main);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 1px;
+    position: relative;
+    text-decoration: none;
     transition: color 0.2s;
 }
 
-.nav-menu li:hover {
-    color: #FF4141;
+.nav-menu li a:hover {
+    color: var(--accent);
 }
 
-.nav-menu hr {
+.nav-menu li hr {
     border: none;
-    width: 70%;
-    height: 2px;
-    border-radius: 10px;
-    background: #FF4141;
-    margin: 2px 0 0 0;
+    width: 100%;
+    height: 3px;
+    background: var(--accent);
+    margin-top: 4px;
+    border-radius: 0;
 }
 
 .nav-login-cart {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 32px;
 }
 
 .nav-login-cart button {
-    min-width: 110px;
-    height: 42px;
-    border: 1.5px solid #dbdbdb;
-    border-radius: 30px;
-    background: #fff;
-    color: #515151;
+    /* Extending global button styles, specific overrides here */
+    padding: 10px 28px;
     font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.2s, box-shadow 0.2s;
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    box-shadow: none;
+}
+
+.nav-login-cart button:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
 .nav-login-cart button:active {
-    background: #f4f4f4;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    transform: none;
+    box-shadow: none;
 }
 
 .cart-container {
     position: relative;
-    display: inline-block;
+    cursor: pointer;
 }
 
 .cart-container img {
-    width: 38px;
-    height: 38px;
-    object-fit: contain;
+    width: 32px;
+    height: 32px;
+    transition: transform 0.2s;
+}
+
+.cart-container:hover img {
+    transform: scale(1.1);
 }
 
 .nav-cart-count {
     position: absolute;
-    top: -6px;
-    right: -7px;
-    width: 22px;
+    top: -8px;
+    right: -12px;
+    min-width: 22px;
     height: 22px;
+    padding: 0 4px;
+    /* Adaptive width */
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     align-items: center;
-    border-radius: 50%;
-    font-size: 13px;
-    font-weight: bold;
-    background: #FF4141;
-    color: #fff;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    border-radius: 99px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 11px;
+    background: var(--accent);
+    color: white;
+    border: 2px solid var(--surface);
+    /* White border to separate from icon */
 }
 
+/* Mobile Menu */
 .nav-dropdown {
     display: none;
-    width: 34px;
-    height: 34px;
+    width: 32px;
     cursor: pointer;
-    margin-left: 13px;
-    transition: transform 0.4s;
+    filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.2));
 }
 
-.nav-dropdown.open {
-    transform: rotate(90deg);
-}
-
-@media (max-width: 950px) {
+/* Responsive */
+@media (max-width: 900px) {
     .navbar {
-        padding: 12px 3vw;
+        padding: 0 20px;
     }
-    .nav-logo img {
-        width: 36px;
-        height: 36px;
-    }
-    .nav-logo p {
-        font-size: 1.3rem;
-    }
-    .nav-menu {
-        gap: 22px;
-        font-size: 1rem;
-    }
-    .nav-login-cart {
-        gap: 22px;
-    }
-    .nav-login-cart button {
-        min-width: 80px;
-        height: 36px;
-        font-size: 0.95rem;
-    }
-}
 
-@media (max-width: 800px) {
-    .navbar {
-        padding: 10px 2vw;
-    }
-    .nav-logo img {
-        width: 28px;
-        height: 28px;
-    }
-    .nav-logo p {
-        font-size: 1.1rem;
-    }
-    .nav-login-cart button {
-        min-width: 62px;
-        font-size: 0.89rem;
-        height: 28px;
-    }
-    .cart-container img {
-        width: 28px;
-        height: 28px;
-    }
     .nav-menu {
-        flex-direction: column;
-        align-items: flex-start;
         position: absolute;
-        top: 99%;
+        top: var(--header-height);
         left: 0;
-        width: 100vw;
-        background: #fff;
-        padding: 14px 19px 8px 19px;
-        box-shadow: 0 8px 18px rgba(0,0,0,0.08);
-        gap: 11px;
+        width: 100%;
+        height: 0;
+        visibility: hidden;
+        /* Hide when closed to prevent clicks */
+        background: var(--surface);
+        flex-direction: column;
+        justify-content: flex-start;
+        /* Start from top */
+        padding-top: 40px;
+        gap: 25px;
+        overflow-y: auto;
+        /* Allow scrolling if menu is long */
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border-bottom: var(--border-width) solid var(--primary);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         opacity: 0;
-        pointer-events: none;
-        max-height: 0;
-        transition: opacity 0.2s, max-height 0.2s;
-        z-index: 19;
     }
+
     .nav-menu.nav-menu-visible {
+        height: 350px;
+        /* Fixed height or auto */
+        visibility: visible;
         opacity: 1;
-        pointer-events: auto;
-        max-height: 400px;
     }
+
+    .nav-menu li a {
+        font-size: 1.5rem;
+    }
+
     .nav-dropdown {
         display: block;
     }
+
+    /* Show login button in navbar on mobile if it fits, or assume it's moved (User didn't ask to move it to menu, so keep it accessible but maybe smaller) */
+    .nav-login-cart button {
+        /* display: none;  <-- Don't hide it completely, maybe just make it smaller or icon only? */
+        /* For now, let's keep it visible but smaller */
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    .nav-login-cart {
+        gap: 20px;
+    }
 }
 
-@media (max-width: 500px) {
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 2px;
-        padding: 7px 1vw;
+@media (max-width: 480px) {
+    .nav-logo p {
+        display: none;
+        /* Hide text on very small screens if needed, or reduce size */
     }
-    .nav-logo {
-        margin-bottom: 3px;
-        gap: 6px;
-        transform: scale(0.97);
-    }
-    .nav-login-cart, 
-    .cart-container img, 
-    .nav-menu li {
-        transform: scale(0.88);
-    }
-    .nav-menu {
-        top: 78px;
+
+    .nav-logo img {
+        height: 40px;
     }
 }

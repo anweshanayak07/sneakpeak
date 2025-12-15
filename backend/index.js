@@ -37,9 +37,9 @@ mongoose
   .catch((err) => console.log(err));
 
 // ------------------ Multer ------------------
-// We will use Multer to receive the file, then upload to Cloudinary
+
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, "/tmp"), // temp directory (works on Render)
+  destination: (req, file, cb) => cb(null, "/tmp"), 
   filename: (req, file, cb) => {
     cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
   },

@@ -18,28 +18,30 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-      <Navbar/>
-      <Routes>
-        <Route path='/' element={<Shop/>}/>
-        <Route path='/men' element={<ShopCategory banner={men_banner} category="men"/>}/>
-        <Route path='/women' element={<ShopCategory banner={women_banner} category="women"/>}/>
-        <Route path='/kids' element={<ShopCategory banner={kids_banner} category="kids"/>}/>
-        <Route path='/product' element={<Product/>}>
-          <Route path=':productId' element={<Product/>}/>
-        </Route>
-        <Route path='/cart' element={<Cart/>}/>
-        <Route path='/login' element={<LoginSignup/>}/>
-        <Route path="/payment-success" element={<PaymentSuccess />} />
-        <Route path="/payment-cancel" element={<PaymentCancel />} />
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Shop />} />
+          <Route path='/men' element={<ShopCategory banner={men_banner} category="men" />} />
+          <Route path='/women' element={<ShopCategory banner={women_banner} category="women" />} />
+          <Route path='/kids' element={<ShopCategory banner={kids_banner} category="kids" />} />
+          <Route path='/product' element={<Product />}>
+            <Route path=':productId' element={<Product />} />
+          </Route>
+          <Route path='/cart' element={<Cart />} />
+          <Route path='/login' element={<LoginSignup />} />
+          <Route path="/payment-success" element={<PaymentSuccess />} />
+          <Route path="/payment-cancel" element={<PaymentCancel />} />
 
 
-      </Routes>
+        </Routes>
 
 
-      <Footer/>
+        <Footer />
       </BrowserRouter>
     </div>
   );
 }
+// Force Rebuild Identifier: v2
+
 
 export default App;

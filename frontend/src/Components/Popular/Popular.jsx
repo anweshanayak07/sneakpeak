@@ -1,26 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Item from "../Item/Item";
 import "./Popular.css";
+import data_product from "../Assets/data";
 
 const Popular = () => {
-  const [popular, setPopular] = useState([]);
-
-  const apiURL = process.env.REACT_APP_API_URL;
-
-  useEffect(() => {
-    fetch(`${apiURL}/popularinmen`)
-      .then((res) => res.json())
-      .then((data) => setPopular(data))
-      .catch((err) => console.error("❌ Error fetching popular items:", err));
-  }, [apiURL]);
-
   return (
     <div className="popular">
-      <h1>POPULAR IN MEN</h1>
+      <h1>POPULAR DROPS</h1>
       <hr />
 
       <div className="popular-item">
-        {popular.map((item) => (
+        {data_product.map((item) => (
           <Item
             key={item.id}
             id={item.id}

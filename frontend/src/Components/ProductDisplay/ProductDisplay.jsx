@@ -31,8 +31,8 @@ const ProductDisplay = (props) => {
             <p>(1807)</p>
         </div>
         <div className="productdisplay-right-prices">
-            <div className="productdisplay-right-price-old">${product.old_price}</div>
-            <div className="productdisplay-right-price-new">${product.new_price}</div>
+            <div className="productdisplay-right-price-old">₹{product.old_price}</div>
+            <div className="productdisplay-right-price-new">₹{product.new_price}</div>
         </div>
         <div className="productdisplay-right-description">
             Engineered for all-day comfort and urban style, these sneakers combine breathable mesh with a durable sole.
@@ -50,7 +50,6 @@ const ProductDisplay = (props) => {
             </div>
         </div>
         <button onClick={() => {addToCart(product.id)}}>ADD TO CART</button>
-        <p className='productdisplay-right-category'><span>Category:</span>Men</p>
         <p className='productdisplay-right-category'><span>Tags:</span>Trendy</p>
       </div>
     </div>
